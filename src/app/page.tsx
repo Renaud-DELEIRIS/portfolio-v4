@@ -125,21 +125,23 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
             <h2 className="text-xl font-bold">My resume</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            <Link download href={DATA.resume.en} target="_blank">
-              <Badge>
-                Download (EN)
-                <Download className="ml-2" size={16} />
-              </Badge>
-            </Link>
+          <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
+            <div className="flex flex-wrap gap-1">
+              <Link download href={DATA.resume.en} target="_blank">
+                <Badge>
+                  Download (EN)
+                  <Download className="ml-2" size={16} />
+                </Badge>
+              </Link>
 
-            <Link download href={DATA.resume.fr} target="_blank">
-              <Badge>
-                Download (FR)
-                <Download className="ml-2" size={16} />
-              </Badge>
-            </Link>
-          </div>
+              <Link download href={DATA.resume.fr} target="_blank">
+                <Badge>
+                  Download (FR)
+                  <Download className="ml-2" size={16} />
+                </Badge>
+              </Link>
+            </div>
+          </BlurFade>
         </div>
       </section>
       <section id="projects">
@@ -163,26 +165,28 @@ export default function Page() {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {DATA.projects.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={"image" in project ? project.image : undefined}
-                    technologies={
-                      "technologies" in project
-                        ? project.technologies
-                        : undefined
-                    }
-                    links={"links" in project ? project.links : []}
-                  />
-                </BlurFade>
-              ))}
+              <li>
+                {DATA.projects.map((project, id) => (
+                  <BlurFade
+                    key={project.title + project.dates}
+                    delay={BLUR_FADE_DELAY * 15 + id * 0.05}
+                  >
+                    <HackathonCard
+                      title={project.title}
+                      description={project.description}
+                      location={project.location}
+                      dates={project.dates}
+                      image={"image" in project ? project.image : undefined}
+                      technologies={
+                        "technologies" in project
+                          ? project.technologies
+                          : undefined
+                      }
+                      links={"links" in project ? project.links : []}
+                    />
+                  </BlurFade>
+                ))}
+              </li>
             </ul>
           </BlurFade>
         </div>

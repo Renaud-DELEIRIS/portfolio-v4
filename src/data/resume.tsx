@@ -16,7 +16,7 @@ export const DATA = {
   },
   summary:
     "Front-End Developer with a strong foundation in modern web technologies, including **React**, **Next.js**, and **TypeScript**. Proven expertise in redesigning web interfaces, integrating blockchain systems, and optimizing user dashboards. Experienced working with international teams in Switzerland and France, delivering impactful projects in insurance, blockchain, and PLM industries.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/me.webp",
   skills: [
     "React",
     "Next.js",
@@ -57,7 +57,7 @@ export const DATA = {
       href: "https://emgsa.ch",
       location: "Remote",
       title: "Front-End Developer",
-      logoUrl: "/opxlive.jpg",
+      logoUrl: "/opxlive.webp",
       start: "June 2024",
       end: "December 2024",
       description: `OPX Live is a unified platform that integrates token creation, trading, and streaming to support the evolving Creator Economy 2.0. Launched on December 28, 2024, it enables content creators to launch personal tokens, interact with their communities through live streaming, and engage in transparent token trading within the Solana blockchain ecosystem. The platform redistributes revenue by allocating a portion of transaction fees directly to verified creators and OPXL token holders, fostering a sustainable and balanced ecosystem. 
@@ -154,7 +154,7 @@ export const DATA = {
       description:
         "Developed a unified platform for content creators to launch personal tokens, interact with their communities through live streaming, and engage in transparent token trading within the Solana blockchain ecosystem.",
       technologies: ["React.js", "Tailwind CSS", "TypeScript"],
-      image: "/opxlive.jpg",
+      image: "/opxlive.webp",
       links: [
         {
           href: "https://opxlive.com",
@@ -211,7 +211,7 @@ export const DATA = {
       description:
         "Developed a centralized platform for gaming and entertainment enthusiasts, bridging traditional digital assets with blockchain technologies for secure transactions.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "TRPC"],
-      image: "/opmarket.jpg",
+      image: "/opmarket.webp",
     },
     {
       title: "Flip GG",
