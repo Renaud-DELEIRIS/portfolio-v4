@@ -31,13 +31,15 @@ export function HackathonCard({
     <div className="relative ml-10 py-4">
       <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
         <Avatar className="border size-12 m-auto">
-          <AvatarImage
-            width={48}
-            height={48}
-            src={image}
-            alt={title}
-            className="object-contain"
-          />
+          {image && (
+            <AvatarImage
+              width={46}
+              height={46}
+              src={image}
+              alt={title}
+              className="object-contain"
+            />
+          )}
           <AvatarFallback>{title[0]}</AvatarFallback>
         </Avatar>
       </div>
