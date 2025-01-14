@@ -2,10 +2,10 @@ import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import { Download } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
@@ -31,14 +31,16 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="h-auto md:block hidden w-[250px] -mr-28">
-                <AvatarImage
-                  className="object-contain"
+              <div className="h-auto md:block hidden w-[250px] -mr-28">
+                <Image
+                  className="object-contain aspect-square rounded-full"
                   alt={DATA.name}
                   src={DATA.avatarUrl}
+                  width={250}
+                  height={250}
+                  priority
                 />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              </div>
             </BlurFade>
           </div>
         </div>

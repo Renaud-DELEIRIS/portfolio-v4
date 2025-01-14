@@ -105,7 +105,7 @@ export const DATA = {
       school: "Epitech",
       href: "https://epitech.eu",
       degree: "Master in Information Technologies",
-      logoUrl: "/epitech.jpg",
+      logoUrl: "/epitech.webp",
       start: "2019",
       end: "2024",
     },
