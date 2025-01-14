@@ -1,13 +1,13 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { Badge } from "./ui/badge";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -15,9 +15,10 @@ interface ResumeCardProps {
   title: string;
   subtitle?: string;
   href?: string;
-  badges?: readonly string[];
   period: string;
   description?: string;
+  technologies?: readonly string[];
+  location?: string;
 }
 export const ResumeCard = ({
   logoUrl,
@@ -25,9 +26,10 @@ export const ResumeCard = ({
   title,
   subtitle,
   href,
-  badges,
   period,
   description,
+  technologies,
+  location,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
@@ -59,20 +61,15 @@ export const ResumeCard = ({
           <CardHeader>
             <div className="flex items-center justify-between gap-x-2 text-base">
               <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
-                {title}
-                {badges && (
-                  <span className="inline-flex gap-x-1">
-                    {badges.map((badge, index) => (
-                      <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
-                        key={index}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </span>
-                )}
+                <span>
+                  {title}
+                  {location && (
+                    <span className="ml-1 text-[10px] text-muted-foreground dark:text-muted-foreground">
+                      ({location})
+                    </span>
+                  )}
+                </span>
+
                 <ChevronRightIcon
                   className={cn(
                     "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
@@ -98,10 +95,17 @@ export const ResumeCard = ({
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-2 text-xs sm:text-sm"
+              className="mt-2 text-xs sm:text-sm whitespace-pre-wrap"
             >
               {description}
             </motion.div>
+          )}
+          {technologies && (
+            <div className="flex flex-wrap gap-2 mt-2 text-xs sm:text-sm">
+              {technologies.map((tech) => (
+                <Badge key={tech}>{tech}</Badge>
+              ))}
+            </div>
           )}
         </div>
       </Card>

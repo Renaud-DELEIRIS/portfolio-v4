@@ -1,6 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Markdown from "react-markdown";
 
 interface Props {
   title: string;
@@ -13,6 +15,7 @@ interface Props {
     title: string;
     href: string;
   }[];
+  technologies?: readonly string[];
 }
 
 export function HackathonCard({
@@ -22,6 +25,7 @@ export function HackathonCard({
   location,
   image,
   links,
+  technologies,
 }: Props) {
   return (
     <li className="relative ml-10 py-4">
@@ -35,23 +39,41 @@ export function HackathonCard({
         {dates && (
           <time className="text-xs text-muted-foreground">{dates}</time>
         )}
-        <h2 className="font-semibold leading-none">{title}</h2>
-        {location && (
-          <p className="text-sm text-muted-foreground">{location}</p>
+        <div className="align-bottom mb-0.5 gap-1 inline-flex items-end">
+          <h2 className="font-semibold leading-none">{title}</h2>
+          {location && (
+            <span className="text-[10px] leading-none text-muted-foreground">
+              ({location})
+            </span>
+          )}
+        </div>
+        {technologies && (
+          <div className="flex flex-row flex-wrap items-start gap-2">
+            {technologies.map((tech, idx) => (
+              <Badge key={idx} title={tech}>
+                {tech}
+              </Badge>
+            ))}
+          </div>
         )}
         {description && (
-          <span className="prose dark:prose-invert text-sm text-muted-foreground">
+          <Markdown className="prose dark:prose-invert text-sm text-muted-foreground">
             {description}
-          </span>
+          </Markdown>
         )}
       </div>
       {links && links.length > 0 && (
         <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
           {links?.map((link, idx) => (
             <Link href={link.href} key={idx}>
-              <Badge key={idx} title={link.title} className="flex gap-2">
-                {link.icon}
+              <Badge
+                variant={"outline"}
+                key={idx}
+                title={link.title}
+                className="flex gap-2"
+              >
                 {link.title}
+                <ArrowUpRight size={16} />
               </Badge>
             </Link>
           ))}

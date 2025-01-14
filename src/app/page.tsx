@@ -5,6 +5,8 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
+import { Download } from "lucide-react";
+import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -30,7 +32,11 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="h-auto md:block hidden w-[250px] -mr-28">
-                <AvatarImage className="object-contain" alt={DATA.name} src={DATA.avatarUrl} />
+                <AvatarImage
+                  className="object-contain"
+                  alt={DATA.name}
+                  src={DATA.avatarUrl}
+                />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -64,9 +70,10 @@ export default function Page() {
                 title={work.company}
                 subtitle={work.title}
                 href={work.href}
-                badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
                 description={work.description}
+                technologies={work.technologies}
+                location={work.location}
               />
             </BlurFade>
           ))}
@@ -89,7 +96,11 @@ export default function Page() {
                 altText={education.school}
                 title={education.school}
                 subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
+                period={
+                  education.start === education.end
+                    ? education.start
+                    : `${education.start} - ${education.end}`
+                }
               />
             </BlurFade>
           ))}
@@ -106,6 +117,28 @@ export default function Page() {
                 <Badge key={skill}>{skill}</Badge>
               </BlurFade>
             ))}
+          </div>
+        </div>
+      </section>
+      <section id="resume">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+            <h2 className="text-xl font-bold">My resume</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-1">
+            <Link download href={DATA.resume.en} target="_blank">
+              <Badge>
+                Download (EN)
+                <Download className="ml-2" size={16} />
+              </Badge>
+            </Link>
+
+            <Link download href={DATA.resume.fr} target="_blank">
+              <Badge>
+                Download (FR)
+                <Download className="ml-2" size={16} />
+              </Badge>
+            </Link>
           </div>
         </div>
       </section>
@@ -140,7 +173,12 @@ export default function Page() {
                     description={project.description}
                     location={project.location}
                     dates={project.dates}
-                    image={project.image}
+                    image={"image" in project ? project.image : undefined}
+                    technologies={
+                      "technologies" in project
+                        ? project.technologies
+                        : undefined
+                    }
                     links={"links" in project ? project.links : []}
                   />
                 </BlurFade>
@@ -164,25 +202,28 @@ export default function Page() {
               </p>
               {/* Phone email linkedin */}
               <ul className="flex justify-center gap-4 mx-auto flex-col items-center">
-                <li  className="flex items-center gap-2">
-                  <a href={`tel:${DATA.phone}`} className="flex items-center gap-1 hover:underline">
-                    <span className="text-primary">
-                      {DATA.phone}
-                    </span>
+                <li className="flex items-center gap-2">
+                  <a
+                    href={`tel:${DATA.phone}`}
+                    className="flex items-center gap-1 hover:underline"
+                  >
+                    <span className="text-primary">{DATA.phone}</span>
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <a href={`mailto:${DATA.email}`} className="flex items-center gap-1 hover:underline">
-                    <span className="text-primary">
-                      {DATA.email}
-                    </span>
+                  <a
+                    href={`mailto:${DATA.email}`}
+                    className="flex items-center gap-1 hover:underline"
+                  >
+                    <span className="text-primary">{DATA.email}</span>
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
-                  <a href={DATA.contact.social.LinkedIn.url} className="flex items-center gap-1 hover:underline">
-                    <span className="text-primary">
-                      LinkedIn
-                    </span>
+                  <a
+                    href={DATA.contact.social.LinkedIn.url}
+                    className="flex items-center gap-1 hover:underline"
+                  >
+                    <span className="text-primary">LinkedIn</span>
                   </a>
                 </li>
               </ul>
