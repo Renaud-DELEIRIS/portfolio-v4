@@ -31,6 +31,8 @@ export const DATA = {
     "Drizzle",
     "C++",
     "Emotion",
+    "PHP",
+    "Twig",
   ],
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
@@ -52,6 +54,17 @@ export const DATA = {
     },
   },
   work: [
+    {
+      company: "Rentrée Discount",
+      href: "https://www.rentreediscount.com",
+      location: "Remote",
+      title: "Front-End Developer",
+      logoUrl: "/rentreediscount.jpeg",
+      start: "April 2025",
+      end: "July 2024",
+      description: `Rentrée Discount is a leading online provider of school supplies in France. During my freelance engagement, I joined their engineering team to significantly enhance the front-end performance of their high-traffic e‑commerce platform. Working with PHP and the Twig templating engine along with Tailwind CSS, I refactored and optimized key UI components to improve page load times and Core Web Vitals. I maintained feature development and code quality through GitLab version control and Jira task tracking in an Agile framework. The outcome was a faster, more reliable, and scalable user experience across critical user journeys such as catalog browsing and checkout.`,
+      technologies: ["PHP (Twig)", "Tailwind CSS", "GitLab", "Jira"],
+    },
     {
       company: "OPXLive",
       href: "https://emgsa.ch",
